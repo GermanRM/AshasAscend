@@ -5,7 +5,7 @@ using UnityEngine;
 public class Kunai : MonoBehaviour
 {
     private PlayerController playerController;
-    private float speed = 7;
+    private float speed = 12;
     // Start is called before the first frame update
     void Start()
     {
