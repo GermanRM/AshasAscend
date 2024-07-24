@@ -3,16 +3,22 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Type01
+  - Type02
+  - Type03
+  - Manager
+  - Suelo
+  - Boss
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Enemy
   - Water
   - UI
-  - 
-  - 
+  - Suelo
+  - Player
   - 
   - 
   - 
@@ -40,4 +46,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: UI
+    uniqueID: 571837709
     locked: 0
