@@ -4,26 +4,11 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class GameManager : MonoBehaviour
+public class Gmanager : MonoBehaviour
 {
-    public static GameManager Instance {get; private set;}
     public float[] totalClicks;
     public TMP_Text[] totalClicksText;
     public GameObject[] stats;
-
-    private void Awake() {
-
-        if(Instance != null)
-        {
-            Destroy(this.gameObject);
-        }
-        else
-        {
-            Instance = this;
-            DontDestroyOnLoad(this.gameObject);
-        }
-    }
-
     public void AddClicks()
     {
         totalClicks[0]++;
