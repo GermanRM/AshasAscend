@@ -8,15 +8,17 @@ public class Jefe : MonoBehaviour
     private Animator animator;
     public Rigidbody2D bossRb;
     public Transform jugador;
+    public LayerMask enemyLayer;
     [SerializeField] private float vida;
     [SerializeField] private float maximaVida;
     [SerializeField] private BarraVidaJefe barraVidaJefe;
+    [SerializeField] private PlayerController playerController;
     private bool mirandoDerecha = true;
 
     [Header("Ataque")]
     [SerializeField] private Transform controladorAtaque;
     [SerializeField] private float radioAtaque;
-    [SerializeField]private float dañoAtaque;
+    [SerializeField]private float dañoAtaque = 20;
     
     public void Start()
     {
@@ -25,6 +27,7 @@ public class Jefe : MonoBehaviour
         vida = maximaVida;
         barraVidaJefe.InicializadorDeBarraDeVida(vida);
         jugador = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
     }
 
     private void Update()
@@ -57,12 +60,13 @@ public class Jefe : MonoBehaviour
         }
     }
     public void Ataque(){
-        Collider2D[] objetos = Physics2D.OverlapCircleAll(controladorAtaque.position, radioAtaque);
-        foreach(Collider2D collision in objetos)
+        Collider2D[] player = Physics2D.OverlapCircleAll(controladorAtaque.position, radioAtaque, enemyLayer);
+        foreach(Collider2D enemy in player)
         {
-            if(collision.CompareTag("Player"))
+            if(enemy.CompareTag("Player"))
             {
-                collision.GetComponent<PlayerController>().TomarDaño(dañoAtaque);
+                enemy.GetComponent<PlayerController>().TomarDaño(dañoAtaque);
+                Debug.Log("Pegaste a " + enemy.name);
             }
         }
     }
