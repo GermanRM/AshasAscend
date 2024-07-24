@@ -881,13 +881,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adb936cc9a94d1e40a7a6dc2045f9562, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 10
   "tama\xF1oRayCast": 0.15
   speedPlayer: 3
   ataquePorSec: 3
-  "da\xF1oPlayer": 20
   vidaPlayer: 0
-  vidaMaxima: 100
   rangoDeAtaque: 0.66
   enemyLayer:
     serializedVersion: 2
