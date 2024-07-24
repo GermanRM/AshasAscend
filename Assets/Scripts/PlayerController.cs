@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     
-    public float jumpForce,tamañoRayCast,speedPlayer, ataquePorSec, dañoPlayer, vidaPlayer, vidaMaxima;
+    public float tamañoRayCast,speedPlayer, ataquePorSec, vidaPlayer;
     public float rangoDeAtaque = 1.5f;
     public LayerMask enemyLayer;
     private float movimientoHorizontal;
@@ -19,19 +19,16 @@ public class PlayerController : MonoBehaviour
     [SerializeField] bool dejarSaltar = false;
     [SerializeField] private float cooldownSalto;
     [SerializeField] private Jefe jefe;
-    // Start is called before the first frame update
     void Start()
     {
         detectorSuelo = GameObject.Find("DetectorSuelo");
         Physics2D.gravity *= 2;
         playerRb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        vidaPlayer = vidaMaxima;
+        vidaPlayer = Estadisticas.Instance.vidaMaxima;
         barraVidaPlayer.InicializadorDeBarraDeVida(vidaPlayer);
         jefe = GameObject.FindGameObjectWithTag("Boss").GetComponent<Jefe>();
     }
-
-    // Update is called once per frame
     void Update()
     {
         inputHorizontal = Input.GetAxis("Horizontal");
@@ -56,7 +53,7 @@ public class PlayerController : MonoBehaviour
         Collider2D[] pegarEnemigos = Physics2D.OverlapCircleAll(puntoDeAtaque.transform.position, rangoDeAtaque, enemyLayer);
         foreach(Collider2D enemy in pegarEnemigos)
         {
-            jefe.TomarDaño(dañoPlayer);
+            jefe.TomarDaño(Estadisticas.Instance.dañoPlayer);
             Debug.Log("Pegaste a " + enemy.name);
         }
     }
@@ -78,6 +75,7 @@ public class PlayerController : MonoBehaviour
             
         }       
     }
+    
         private void Movimiento()
     {
         inputHorizontal = Input.GetAxis("Horizontal");
@@ -119,7 +117,7 @@ public class PlayerController : MonoBehaviour
             {
                 dejarSaltar = false;
                 animator.SetBool("Idle", false);
-                playerRb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+                playerRb.AddForce(Vector2.up * Estadisticas.Instance.jumpForce, ForceMode2D.Impulse);
                 animator.SetTrigger("Jump");
             }
         }
