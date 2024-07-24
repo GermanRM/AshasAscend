@@ -1,12 +1,8 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/Art/Sprites/Characters/PlayerSprites/Idle/Idle__000 1.controller.meta
 guid: d2565faf46634f440a65667032f24a47
-========
-guid: f5928b1e83afc9a4493034f36d86e025
->>>>>>>> main:Assets/Art/Sprites/Characters/Idle__001 1.controller.meta
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 9100000
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
+  userData:
+  assetBundleName:
+  assetBundleVariant:
