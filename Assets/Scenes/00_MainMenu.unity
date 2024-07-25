@@ -1307,10 +1307,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Karol Diaz| UI, FX Artist, Sound Designer
+  m_text: Karol Diaz | UI, FX Artist, Sound Designer
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ba58b55aef29cc941b500e5ff80a21ab, type: 2}
+  m_sharedMaterial: {fileID: 1644831813199926100, guid: ba58b55aef29cc941b500e5ff80a21ab, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1841,8 +1841,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Credits
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ba58b55aef29cc941b500e5ff80a21ab, type: 2}
+  m_sharedMaterial: {fileID: 1644831813199926100, guid: ba58b55aef29cc941b500e5ff80a21ab, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1866,7 +1866,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 31.75
+  m_fontSize: 25.05
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2494,10 +2494,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Miguel Alejandro Palacio | Game Designer, programer
+  m_text: Miguel Alejandro Palacio | Game Designer, programmer
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ba58b55aef29cc941b500e5ff80a21ab, type: 2}
+  m_sharedMaterial: {fileID: 1644831813199926100, guid: ba58b55aef29cc941b500e5ff80a21ab, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2690,6 +2690,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainMenuUI: {fileID: 747121598}
   settingsUI: {fileID: 276567690}
+  gameM: {fileID: 0}
   Quit_button: {fileID: 2064793426}
 --- !u!1 &1849073887
 GameObject:
@@ -2749,10 +2750,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "German Mu\xF1oz Pabon | Programer, sound Designer"
+  m_text: "German Mu\xF1oz Pabon | Programmer, sound Designer, Build & Release"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ba58b55aef29cc941b500e5ff80a21ab, type: 2}
+  m_sharedMaterial: {fileID: 1644831813199926100, guid: ba58b55aef29cc941b500e5ff80a21ab, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2899,7 +2900,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 765, y: -466}
+  m_AnchoredPosition: {x: 765, y: -414.82}
   m_SizeDelta: {x: 160, y: 69.46}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2052985457
@@ -2970,7 +2971,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 65555144}
+      - m_Target: {fileID: 336916877}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -3078,10 +3079,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Angela Gomez Parra| Game Designer, Ui Artist
+  m_text: Angela Gomez Parra | Game Designer, Ui Artist
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ba58b55aef29cc941b500e5ff80a21ab, type: 2}
+  m_sharedMaterial: {fileID: 1644831813199926100, guid: ba58b55aef29cc941b500e5ff80a21ab, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

@@ -6,11 +6,12 @@ public class MainMenu : MonoBehaviour
 {
     public GameObject mainMenuUI;
     public GameObject settingsUI;
-
+    public GameObject gameM;
     public Button Quit_button; // Ensure this is assigned in the Inspector
 
     void Start()
     {
+        gameM = GameObject.Find("GameManager");
         ShowMainMenu();
 
         // Add listener to the Quit button
@@ -35,7 +36,8 @@ public class MainMenu : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("SceneOne");
+        Destroy(gameM);
+        SceneManager.LoadScene("01_TrainingScene", LoadSceneMode.Single);
     }
 
     public void QuitGame()

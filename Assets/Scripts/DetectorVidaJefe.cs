@@ -35,12 +35,13 @@ public class DetectorVidaJefe : MonoBehaviour
 
     public void BotonCambio(int sceneID)
     {
-        SceneManager.LoadScene(sceneID);
+        SceneManager.LoadScene(sceneID, LoadSceneMode.Single);
         //Time.timeScale = 1;
     }
     public void BotonLose(int sceneID)
     {
-        SceneManager.LoadScene(sceneID);
+        SceneManager.LoadScene(sceneID, LoadSceneMode.Single);
+        
     }
 
 }
