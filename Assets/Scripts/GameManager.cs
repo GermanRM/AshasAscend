@@ -1,5 +1,6 @@
 using System.Collections;
 using TMPro;
+using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -16,6 +17,13 @@ public class GameManager : MonoBehaviour
     public TMP_Text tiempoText; // Texto UI para mostrar el temporizador
 
     private bool tiempoTerminado = false; // Variable para verificar si el tiempo ha terminado
+    
+    public AudioClip agiSound, strSound, vitSound;
+    public AudioSource audioM;
+
+    public Animator animationM;
+
+    public AnimatorController idleanim, agiAnim, strAnim, vitAnim;
 
     private void Awake()
     {
@@ -28,6 +36,10 @@ public class GameManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(this.gameObject);
         }
+    }
+    private void Start() {
+        audioM = GetComponent<AudioSource>();
+        animationM = GetComponent<Animator>();
     }
 
     private void Update()
@@ -60,6 +72,11 @@ public class GameManager : MonoBehaviour
             totalClicks[1]++;
             totalClicksText[1].text = totalClicks[1].ToString("0");
             CheckAndActivateIndicator(1, totalClicks[1]);
+            if (totalClicks[1] % 4 == 0)
+            {
+                audioM.PlayOneShot(vitSound);
+                animationM.SetTrigger("Attack");
+            }
             if (totalClicks[1] % 10 == 0)
             {
                 Estadisticas.Instance.IncrementVidaMaxima(1);
@@ -70,6 +87,10 @@ public class GameManager : MonoBehaviour
             totalClicks[2]++;
             totalClicksText[2].text = totalClicks[2].ToString("0");
             CheckAndActivateIndicator(2, totalClicks[2]);
+            if (totalClicks[2] % 3 == 0)
+            {
+                audioM.PlayOneShot(strSound);
+            }
             if (totalClicks[2] % 10 == 0)
             {
                 Estadisticas.Instance.IncrementDañoPlayer(1);
@@ -80,6 +101,10 @@ public class GameManager : MonoBehaviour
             totalClicks[3]++;
             totalClicksText[3].text = totalClicks[3].ToString("0");
             CheckAndActivateIndicator(3, totalClicks[3]);
+            if (totalClicks[3] % 5 == 0)
+            {
+                audioM.PlayOneShot(agiSound);
+            }
             if (totalClicks[3] % 10 == 0)
             {
                 Estadisticas.Instance.IncrementJumpForce(1);
