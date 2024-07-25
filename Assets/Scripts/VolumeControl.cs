@@ -15,7 +15,6 @@ public class VolumeControl : MonoBehaviour
 
     void Start()
     {
-      
         // Initialize the slider with the current volume
         float volume;
         audioMixer.GetFloat("Volume", out volume);
@@ -24,6 +23,7 @@ public class VolumeControl : MonoBehaviour
         // Add listeners for the slider and buttons
         volumeSlider.onValueChanged.AddListener(SetVolume);
         muteButton.onClick.AddListener(ToggleMute);
+        muteCheckbox.onValueChanged.AddListener(ToggleMuteFromCheckbox);
 
         // Initialize the mute button state
         UpdateMuteButton();
@@ -39,10 +39,29 @@ public class VolumeControl : MonoBehaviour
         audioMixer.SetFloat("Volume", volume);
     }
 
-
     public void ToggleMute()
     {
         isMuted = !isMuted;
+
+        if (isMuted)
+        {
+            // Set the AudioMixer to mute
+            audioMixer.SetFloat("Volume", -80f); // Use -80 dB or another low value to simulate mute
+        }
+        else
+        {
+            // Restore volume level based on slider value
+            float sliderValue = volumeSlider.value;
+            float volume = Mathf.Lerp(-60f, 0f, sliderValue);
+            audioMixer.SetFloat("Volume", volume);
+        }
+
+        UpdateMuteButton();
+    }
+
+    public void ToggleMuteFromCheckbox(bool isChecked)
+    {
+        isMuted = isChecked;
 
         if (isMuted)
         {
