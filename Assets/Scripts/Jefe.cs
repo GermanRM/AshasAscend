@@ -18,11 +18,11 @@ public class Jefe : MonoBehaviour
     [Header("Ataque")]
     [SerializeField] private Transform controladorAtaque;
     [SerializeField] private float radioAtaque;
-    [SerializeField]private float dañoAtaque = 20;
+    [SerializeField] private float dañoAtaque = 20;
     
     public void Start()
     {
-        animator =GetComponent<Animator>();
+        animator = GetComponent<Animator>();
         bossRb = GetComponent<Rigidbody2D>();
         vida = maximaVida;
         barraVidaJefe.InicializadorDeBarraDeVida(vida);
@@ -40,12 +40,12 @@ public class Jefe : MonoBehaviour
     {
         vida -= daño;
         barraVidaJefe.CambiarVidaActual(vida);
-        if(vida <= 0)
+        if (vida <= 0)
         {
             animator.SetTrigger("Muerte");
-            
         }
     }
+
     private void Muerte()
     {
         Destroy(gameObject);
@@ -53,26 +53,35 @@ public class Jefe : MonoBehaviour
 
     public void MirarJugador()
     {
-        if((jugador.position.x > transform.position.x && !mirandoDerecha) || (jugador.position.x < transform.position.x && mirandoDerecha))
+        if ((jugador.position.x > transform.position.x && !mirandoDerecha) || (jugador.position.x < transform.position.x && mirandoDerecha))
         {
-            mirandoDerecha =!mirandoDerecha;
+            mirandoDerecha = !mirandoDerecha;
             transform.eulerAngles = new Vector3(0, transform.eulerAngles.y + 180, 0);
         }
     }
-    public void Ataque(){
+
+    public void Ataque()
+    {
         Collider2D[] player = Physics2D.OverlapCircleAll(controladorAtaque.position, radioAtaque, enemyLayer);
-        foreach(Collider2D enemy in player)
+        foreach (Collider2D enemy in player)
         {
-            if(enemy.CompareTag("Player"))
+            if (enemy.CompareTag("Player"))
             {
                 enemy.GetComponent<PlayerController>().TomarDaño(dañoAtaque);
                 Debug.Log("Pegaste a " + enemy.name);
             }
         }
     }
-     private void OnDrawGizmos() 
+
+    private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(controladorAtaque.position, radioAtaque);
+    }
+
+    // Method to get the player's transform
+    public Transform GetPlayerTransform()
+    {
+        return jugador;
     }
 }
