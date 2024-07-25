@@ -5,13 +5,12 @@ using UnityEngine.Audio;
 public class VolumeControl : MonoBehaviour
 {
     public Slider volumeSlider;
-    public Button volumeButton;
     public Button muteButton; // Button for mute toggle
     public Toggle muteCheckbox; // Checkbox to show mute state
-    public GameObject volumeSliderUI; // Reference to the Slider UI GameObject
     public AudioMixer audioMixer; // Reference to the AudioMixer
 
     private bool isMuted = false; // Track mute state
+    private bool isUpdatingMuteState = false; // To prevent recursive event triggering
 
     void Start()
     {
@@ -20,13 +19,13 @@ public class VolumeControl : MonoBehaviour
         audioMixer.GetFloat("Volume", out volume);
         volumeSlider.value = Mathf.Pow(10, volume / 20); // Convert dB to linear
 
-        // Add listeners for the slider and buttons
+        // Add listeners for the slider, mute button, and checkbox
         volumeSlider.onValueChanged.AddListener(SetVolume);
         muteButton.onClick.AddListener(ToggleMute);
-        muteCheckbox.onValueChanged.AddListener(ToggleMuteFromCheckbox);
+        muteCheckbox.onValueChanged.AddListener(OnCheckboxValueChanged);
 
         // Initialize the mute button state
-        UpdateMuteButton();
+        UpdateMuteState();
     }
 
     public void SetVolume(float sliderValue)
@@ -41,27 +40,25 @@ public class VolumeControl : MonoBehaviour
 
     public void ToggleMute()
     {
+        if (isUpdatingMuteState)
+            return;
+
         isMuted = !isMuted;
-
-        if (isMuted)
-        {
-            // Set the AudioMixer to mute
-            audioMixer.SetFloat("Volume", -80f); // Use -80 dB or another low value to simulate mute
-        }
-        else
-        {
-            // Restore volume level based on slider value
-            float sliderValue = volumeSlider.value;
-            float volume = Mathf.Lerp(-60f, 0f, sliderValue);
-            audioMixer.SetFloat("Volume", volume);
-        }
-
-        UpdateMuteButton();
+        ApplyMuteState();
     }
 
-    public void ToggleMuteFromCheckbox(bool isChecked)
+    private void OnCheckboxValueChanged(bool isOn)
     {
-        isMuted = isChecked;
+        if (isUpdatingMuteState)
+            return;
+
+        isMuted = isOn;
+        ApplyMuteState();
+    }
+
+    private void ApplyMuteState()
+    {
+        isUpdatingMuteState = true;
 
         if (isMuted)
         {
@@ -76,10 +73,11 @@ public class VolumeControl : MonoBehaviour
             audioMixer.SetFloat("Volume", volume);
         }
 
-        UpdateMuteButton();
+        UpdateMuteState();
+        isUpdatingMuteState = false;
     }
 
-    private void UpdateMuteButton()
+    private void UpdateMuteState()
     {
         if (muteCheckbox != null)
         {
