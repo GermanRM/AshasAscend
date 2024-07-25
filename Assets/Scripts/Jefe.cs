@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class Jefe : MonoBehaviour
@@ -19,6 +18,10 @@ public class Jefe : MonoBehaviour
     [SerializeField] private Transform controladorAtaque;
     [SerializeField] private float radioAtaque;
     [SerializeField] private float dañoAtaque = 20;
+
+    // Add a public variable for speed
+    [Header("Movimiento")]
+    public float velocidadMovimiento = 12f;
     
     public void Start()
     {
