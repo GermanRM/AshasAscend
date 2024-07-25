@@ -8,7 +8,7 @@ public class Jefe : MonoBehaviour
     public Rigidbody2D bossRb;
     public Transform jugador;
     public LayerMask enemyLayer;
-    [SerializeField] public float vida;
+    [SerializeField] private float vida;
     [SerializeField] private float maximaVida;
     [SerializeField] private BarraVidaJefe barraVidaJefe;
     [SerializeField] private PlayerController playerController;
@@ -45,14 +45,13 @@ public class Jefe : MonoBehaviour
         barraVidaJefe.CambiarVidaActual(vida);
         if (vida <= 0)
         {
-            Destroy(gameObject, 1f);
-            animator.SetTrigger("Die");
+            animator.SetTrigger("Muerte");
         }
     }
 
     private void Muerte()
     {
-        Destroy(gameObject, 1f);
+        Destroy(gameObject);
     }
 
     public void MirarJugador()
