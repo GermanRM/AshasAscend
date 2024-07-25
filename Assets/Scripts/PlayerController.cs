@@ -100,7 +100,7 @@ public class PlayerController : MonoBehaviour
         barraVidaPlayer.CambiarVidaActual(vidaPlayer);
         if (vidaPlayer <= 0)
         {
-            animator.SetTrigger("Muerte");
+            animator.SetTrigger("Die");
         }
     }
 
