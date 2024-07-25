@@ -1,6 +1,5 @@
 using System.Collections;
 using TMPro;
-using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -20,10 +19,7 @@ public class GameManager : MonoBehaviour
     
     public AudioClip agiSound, strSound, vitSound;
     public AudioSource audioM;
-
-    public Animator animationM;
-
-    public AnimatorController idleanim, agiAnim, strAnim, vitAnim;
+    public GameObject progressButton;
 
     private void Awake()
     {
@@ -39,7 +35,6 @@ public class GameManager : MonoBehaviour
     }
     private void Start() {
         audioM = GetComponent<AudioSource>();
-        animationM = GetComponent<Animator>();
     }
 
     private void Update()
@@ -52,6 +47,7 @@ public class GameManager : MonoBehaviour
             {
                 tiempo = 0;
                 tiempoTerminado = true;
+                progressButton.SetActive(true);
             }
 
             tiempoText.text = "Tiempo: " + Mathf.Ceil(tiempo).ToString("0"); // Actualizar el texto del temporizador
@@ -74,8 +70,7 @@ public class GameManager : MonoBehaviour
             CheckAndActivateIndicator(1, totalClicks[1]);
             if (totalClicks[1] % 4 == 0)
             {
-                audioM.PlayOneShot(vitSound);
-                animationM.SetTrigger("Attack");
+                audioM.PlayOneShot(vitSound, 0.5f);
             }
             if (totalClicks[1] % 10 == 0)
             {
@@ -89,7 +84,7 @@ public class GameManager : MonoBehaviour
             CheckAndActivateIndicator(2, totalClicks[2]);
             if (totalClicks[2] % 3 == 0)
             {
-                audioM.PlayOneShot(strSound);
+                audioM.PlayOneShot(strSound,1.0f);
             }
             if (totalClicks[2] % 10 == 0)
             {
@@ -103,7 +98,7 @@ public class GameManager : MonoBehaviour
             CheckAndActivateIndicator(3, totalClicks[3]);
             if (totalClicks[3] % 5 == 0)
             {
-                audioM.PlayOneShot(agiSound);
+                audioM.PlayOneShot(agiSound,0.7f);
             }
             if (totalClicks[3] % 10 == 0)
             {
