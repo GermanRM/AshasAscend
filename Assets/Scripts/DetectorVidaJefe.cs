@@ -24,7 +24,7 @@ public class DetectorVidaJefe : MonoBehaviour
         if(jefe.vida <= 0)
         {
             panelCambioEscena.SetActive(true);
-            Time.timeScale = 0;
+            //Time.timeScale = 0;
         }
         if(playerController.vidaPlayer <= 0)
         {
@@ -36,7 +36,7 @@ public class DetectorVidaJefe : MonoBehaviour
     public void BotonCambio(int sceneID)
     {
         SceneManager.LoadScene(sceneID);
-        Time.timeScale = 1;
+        //Time.timeScale = 1;
     }
     public void BotonLose(int sceneID)
     {

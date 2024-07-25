@@ -141,17 +141,22 @@ public class PlayerController : MonoBehaviour
             dejarSaltar = true;
             if (Input.GetKeyDown(KeyCode.Space) && dejarSaltar != false)
             {
+                if (jumpEffectPrefab != null)
+                {
+                    GameObject effect = Instantiate(jumpEffectPrefab, transform.position - new Vector3(0,1.3f,0), Quaternion.identity);
+                    Destroy(effect, 2.0f); // Adjust the duration to match your particle effect's length
+                }
                 dejarSaltar = false;
                 animator.SetBool("Idle", false);
                 playerRb.AddForce(Vector2.up * Estadisticas.Instance.jumpForce, ForceMode2D.Impulse);
                 animator.SetTrigger("Jump");
 
                 // Instantiate the jump effect at the player's position and destroy it after a delay
-                if (jumpEffectPrefab != null)
+                /*if (jumpEffectPrefab != null)
                 {
                     GameObject effect = Instantiate(jumpEffectPrefab, transform.position, Quaternion.identity);
                     Destroy(effect, 2f); // Adjust the duration to match your particle effect's length
-                }
+                }*/
             }
         }
     }
