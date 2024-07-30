@@ -13,10 +13,10 @@ public class GameManager : MonoBehaviour
     public GameObject[] stats;
     public GameObject[] indicadores;
 
-    public float tiempo = 60f; // Duración del temporizador
+    public float tiempo = 60.0f; // Duración del temporizador
     public TMP_Text tiempoText; // Texto UI para mostrar el temporizador
 
-    private bool tiempoTerminado = false; // Variable para verificar si el tiempo ha terminado
+    public bool tiempoTerminado = false; // Variable para verificar si el tiempo ha terminado
     
     public AudioClip agiSound, strSound, vitSound;
     public AudioSource audioM;
